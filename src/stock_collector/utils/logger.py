@@ -2,7 +2,6 @@ import logging
 
 from config.settings import LOG_DIR
 
-
 LOG_FILE = LOG_DIR / "app.log"
 
 
