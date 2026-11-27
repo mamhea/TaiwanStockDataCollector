@@ -22,7 +22,14 @@ class DailyMarketData(TypedDict):
     Date: str
     Code: str
     Name: str
-    ClosingPrice: str
+    TradeVolume: str | None
+    TradeValue: str | None
+    OpeningPrice: str | None
+    HighestPrice: str | None
+    LowestPrice: str | None
+    ClosingPrice: str | None
+    Change: str
+    Transaction: str | None
 
 
 class BaseAPIClient:
