@@ -7,6 +7,10 @@ name = "taiwan-stock-data-collector"
 version = "0.1.0"
 description = "Taiwan stock market data collection system"
 requires-python = ">=3.14"
+dependencies = ["requests>=2.32.0"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -14,6 +18,3 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-
-[project.optional-dependencies]
-dev = ["pytest", "ruff"]
