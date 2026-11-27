@@ -70,14 +70,7 @@ class BaseAPIClient:
 
                 response.raise_for_status()
 
-                try:
-                    data = response.json()
-                except requests.exceptions.JSONDecodeError:
-                    logger.error(
-                        "Invalid JSON response: %s",
-                        url,
-                    )
-                    raise
+                data = response.json()
 
                 logger.info(
                     "Request successful: %s",
@@ -87,6 +80,10 @@ class BaseAPIClient:
                 return data
 
             except requests.exceptions.JSONDecodeError:
+                logger.error(
+                    "Invalid JSON response: %s",
+                    url,
+                )
                 raise
 
             except requests.RequestException as error:
