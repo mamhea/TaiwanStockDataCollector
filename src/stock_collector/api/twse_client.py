@@ -1,6 +1,9 @@
 from typing import TypeGuard
 
 from stock_collector.api.base_client import BaseAPIClient, DailyMarketData, JSONValue
+from stock_collector.utils.logger import setup_logger
+
+logger = setup_logger("stock_collector.api.twse")
 
 
 class TWSEClient(BaseAPIClient):
@@ -50,14 +53,20 @@ class TWSEClient(BaseAPIClient):
         data = self.get(self.DAILY_MARKET_ENDPOINT)
 
         if not isinstance(data, list):
+            logger.error("TWSE API response must be a list")
             raise TypeError("TWSE API response must be a list")
 
         records: list[DailyMarketData] = []
 
         for index, item in enumerate(data):
             if not self._is_daily_market_data(item):
+                logger.error(f"Invalid TWSE market data at index {index}")
                 raise ValueError(f"Invalid TWSE market data at index {index}")
 
             records.append(item)
+
+        logger.info(
+            "Successfully fetched %d daily marked records from TWSE", len(records)
+        )
 
         return records
