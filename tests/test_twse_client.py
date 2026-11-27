@@ -12,7 +12,14 @@ def test_get_daily_market_data() -> None:
             "Date": "1151118",
             "Code": "2330",
             "Name": "台積電",
+            "TradeVolume": "1000000",
+            "TradeValue": "1500000000",
+            "OpeningPrice": "1490.00",
+            "HighestPrice": "1510.00",
+            "LowestPrice": "1485.00",
             "ClosingPrice": "1500.00",
+            "Change": "10.00",
+            "Transaction": "5000",
         }
     ]
 
