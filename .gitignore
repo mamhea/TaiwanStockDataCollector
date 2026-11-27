@@ -4,6 +4,9 @@ __pycache__/
 *.py[cod]
 *.pyo
 
+# Python package metadata
+*.egg-info/
+
 # Virtual environments
 .venv/
 venv/

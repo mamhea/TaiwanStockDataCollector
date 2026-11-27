@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 # Project directories
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,10 +14,17 @@ DATABASE_PATH = DATABASE_DIR / "taiwan_stock.db"
 
 
 # API configuration
-REQUEST_TIMEOUT = 30
+REQUEST_TIMEOUT = (5, 30)
 REQUEST_RETRIES = 3
 REQUEST_INTERVAL = 1.0
 
+RETRY_STATUS_CODES = {
+    429,
+    500,
+    502,
+    503,
+    504,
+}
 
 # Historical data configuration
 HISTORICAL_YEARS = 5
